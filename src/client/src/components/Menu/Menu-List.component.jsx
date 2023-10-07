@@ -9,6 +9,15 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Box from "@mui/material/Box";
 
+const menuList = [
+  { name: "Home", icon: "" },
+  { name: "Channel", icon: "" },
+  { name: "Videos", icon: "" },
+  { name: "Subscribers", icon: "" },
+  { name: "Subscriptions", icon: "" },
+  { name: "Settings", icon: "" },
+];
+
 const MenuList = ({ onClick, onKeydown, anchor }) => {
   return (
     <Box
@@ -18,30 +27,16 @@ const MenuList = ({ onClick, onKeydown, anchor }) => {
       onKeyDown={onKeydown}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {menuList.map((menu, index) => (
+          <ListItem key={menu.name} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemIcon>{menu.icon}</ListItemIcon>
+              <ListItemText primary={menu.name} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
     </Box>
   );
 };
